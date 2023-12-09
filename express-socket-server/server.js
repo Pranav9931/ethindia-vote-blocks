@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // Use body-parser for parsing JSON in the request b
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   cors: {
-    origin: ["http://localhost:3000"],
+    origin: "http://127.0.0.1:3000",
     methods: ["GET", "POST"],
   },
 });
