@@ -7,6 +7,7 @@ import io from 'socket.io-client';
 import { LogoImage, LogoCompact } from '../assets';
 import { Button, TextField, Typography } from '@mui/material';
 import { SwapVerticalCircleOutlined } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 const socket = io('http://localhost:3001');
 
 const PollComponent = styled.div`
@@ -59,6 +60,7 @@ const Wrapper = styled.div`
 `
 
 const PollVotePage = () => {
+  const navigate = useNavigate();
   const { newVoter, setNewVoter } = useStateContext();
   useEffect(() => {
     // listen for updates to newVoter data from the server
@@ -128,7 +130,7 @@ const PollVotePage = () => {
               }}
               value={newVoter.voterid} disabled />
 
-            <Button variant="outlined" style={{ width: '100%', height: '50px', margin: '10px 0' }}>Next/आगे बढ़े</Button>
+            <Button variant="outlined" style={{ width: '100%', height: '50px', margin: '10px 0' }} onClick={() => navigate("./poll/vote")}>Next/आगे बढ़े</Button>
           </VotingContainer>
         </FlexBox>
         :
